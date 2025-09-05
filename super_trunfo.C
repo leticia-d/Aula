@@ -26,7 +26,7 @@ int main(){
     
 // Coleta de dados do usuário para definição da carta 01
 
-   printf("Para definir seu estado, escolha uma letra de 'a' a 'h': \n");
+   printf("Jogador 01, para definir seu estado, escolha uma letra de 'a' a 'h': \n");
    scanf(" %c", &estado1);
    
    printf ("Digite o código da carta (A letra do estado seguida de um número de 01 a 04 por exemplo: A01, B03...)\n");
@@ -59,7 +59,7 @@ int main(){
    printf ("\nCarta 01 \n Estado: %c  \n Código: %s \n Nome da Cidade: %s \n População: %lu\n Área: %.2f km² \n PIB %.2f \n Número de Pontos Turísticos: %d \n Densidade populacional %.2f\n PIB per capita: %.2f\n Superpoder: %.3f\n", estado1, codigocarta1, nomecidade1, populacao1, areacidade1, PIB1, qtdpontos1, Densidadepopulacional1, PIBpercapita1, superpoder1 );
 
    //Coleta de dados do usuário para definição da carta 02
-   printf("Para definir seu estado, escolha uma letra de 'a' a 'h': \n");
+   printf("Jogador 02, para definir seu estado, escolha uma letra de 'a' a 'h': \n");
    scanf(" %c", &estado2);
 
    printf ("Digite o código da carta (A letra do estado seguida de um número de 01 a 04 por exemplo: A01, B03...)\n");
@@ -100,5 +100,16 @@ int main(){
    printf("PIB per Capita: Carta 1 venceu (%d)\n", PIBpercapita1 > PIBpercapita2);
    printf("Super Poder: Carta 1 venceu (%d)\n", superpoder1 > superpoder2);
    
+// Comparando atributo específico para ver qual carta vence a batalha
+   printf ("Agora iremos batalhar com a propriedade Poulação!\n");
+   printf ("Carta 01: %lu\nCarta 02: %lu\n",populacao1, populacao2);
+   
+   if (populacao1 > populacao2) {
+   printf ("Resultado: Carta 01 Venceu!\n");
+   }
+   else {
+   printf ("Resultado: Carta 02 Venceu!\n");
+   }
+
 return 0;
 }
