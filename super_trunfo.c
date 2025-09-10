@@ -9,9 +9,10 @@ int main(){
     char estado1 = 'a';
     char codigocarta1[20] = "A00";
     char nomecidade1[20] = "nomecidade";
-    char nomeatributo[20] = "nomeatributo";
+    char nomeatributo1[20] = "nomeatributo";
+    char nomeatributo2[20] = "nomeatributo";
     unsigned long int populacao1;
-    int qtdpontos1, atributo;
+    int qtdpontos1, atributo1, atributo2;
     float areacidade1, PIB1, PIBpercapita1, Densidadepopulacional1, superpoder1;
 
     //Variáveis Carta 02
@@ -114,86 +115,232 @@ int main(){
    }
 */
 
-//Escolha do atributo a ser utilizado na batalha
-printf ("***Agora, escolha qual atributo será utilizado para a batalha:***\n");
+//Esolha dos atributos a serem utilizados para as 2 batalhas
+
+printf ("***Agora, você escolherá 2 atributos a serem utilizados para a batalha:***\n");
+
+//Menu interativo de escolha do primeiro atributo
+printf("Escolha o primeiro atributo:\n");
 printf ("1. População\n");
 printf ("2. Área\n");
 printf ("3. PIB\n");
 printf ("4. Pontos turísticos\n");
-scanf ("%d", &atributo);
+printf("5. Densidade populacional (MENOR vence)\n");
 
-if (atributo == 1) {
-   strcpy(nomeatributo, "População");
-} else if (atributo == 2) {
-   strcpy(nomeatributo, "Área");
-} else if (atributo == 3) {
-   strcpy(nomeatributo, "PIB");
-} else if (atributo == 4) {
-   strcpy(nomeatributo, "Pontos Turísticos");
+//Jogador escolhe primeiro atributo
+scanf ("%d", &atributo1);
+
+//Nomeando o primeiro atributo de acordo com o número digitado
+if (atributo1 == 1) {
+   strcpy(nomeatributo1, "População");
+} else if (atributo1 == 2) {
+   strcpy(nomeatributo1, "Área");
+} else if (atributo1 == 3) {
+   strcpy(nomeatributo1, "PIB");
+} else if (atributo1 == 4) {
+   strcpy(nomeatributo1, "Pontos Turísticos");
+} else if (atributo1 == 5) {
+   strcpy(nomeatributo1, "Densidade Populacional");
 } else {
-   strcpy(nomeatributo, "Desconhecido");
+   strcpy(nomeatributo1, "Desconhecido");
 }
 
-//Exibição do resultado
+//Mostrar na tela o primeiro atributo escolhido
+if ( 1 > atributo1 || atributo1 > 5) {
+    printf("Inválido!\n");
+    return 0; //encerra o programa
+} else {
+    printf("O primeiro atributo escolhido foi: %s\n", nomeatributo1);
+}
+
+//Menu interativo de escolha do segundo atributo, excluindo a opção do primeiro atributo
+printf("Agora, escolha o segundo atributo:\n");
+
+switch (atributo1){ 
+   case 1 : printf ("2. Área\n");
+   printf ("3. PIB\n");
+   printf ("4. Pontos turísticos\n");
+   printf ("5. Densidade populacional (MENOR vence)\n");
+   break;
+
+   case 2 : printf ("1. População\n");
+   printf ("3. PIB\n");
+   printf ("4. Pontos turísticos\n");
+   printf("5. Densidade populacional (MENOR vence)\n");
+   break;
+
+   case 3 : printf ("1. População\n");
+   printf ("2. Área\n");
+   printf ("4. Pontos turísticos\n");
+   printf("5. Densidade populacional (MENOR vence)\n");
+   break;
+
+   case 4 : printf ("1. População\n");
+   printf ("2. Área\n");
+   printf ("3. PIB\n");
+   printf("5. Densidade populacional (MENOR vence)\n");
+   break;
+
+   case 5 : printf ("1. População\n");
+   printf ("2. Área\n");
+   printf ("3. PIB\n");
+   printf ("4. Pontos turísticos\n");
+   break;
+}
+
+//Jogador escolhe segundo atributo
+scanf ("%d", &atributo2);
 
 
-printf ("Cidade 01: %s | Cidade 02: %s\n", nomecidade1, nomecidade2);
-printf ("Atributo usado na comparação: %s\n", nomeatributo);
-   switch (atributo) {
+//Nomeando o segundo atributo de acordo com o número digitado
+if (atributo2 == 1) {
+   strcpy(nomeatributo2, "População");
+} else if (atributo2 == 2) {
+   strcpy(nomeatributo2, "Área");
+} else if (atributo2 == 3) {
+   strcpy(nomeatributo2, "PIB");
+} else if (atributo2 == 4) {
+   strcpy(nomeatributo2, "Pontos Turísticos");
+} else if (atributo2 == 5) {
+   strcpy(nomeatributo2, "Densidade Populacional");
+} else {
+   strcpy(nomeatributo2, "Desconhecido");
+}
+
+//Mostrar na tela o segundo atributo escolhido
+if (atributo1 == atributo2) {
+    printf("O segundo atributo deve ser diferente do primeiro!\n");
+    return 0; //encerra o programa
+} else if ( 1 > atributo2 || atributo2 > 5) {
+    printf("Inválido!\n");
+    return 0; //encerra o programa
+} else {
+    printf("O segundo atributo escolhido foi: %s\n", nomeatributo2);
+}
+
+
+//Exibição dos valores do primeiro atributo de cada carta
+printf ("***Atributos escolhidos! Agora vamos aos resultados dessa disputa!***\n");
+printf ("Cidade 01 - %s VS. Cidade 02 - %s\n", nomecidade1, nomecidade2);
+printf ("1º Batalha: %s\n", nomeatributo1);
+   switch (atributo1) {
       case 1:
-      printf ("População Carta 01: %lu | População Carta 02: %lu\n", populacao1, populacao2);
+      printf ("População Carta 01 = %lu | População Carta 02 = %lu\n", populacao1, populacao2);
       break;
     case 2:
-      printf ("Área Carta 01: %.2f | Área Carta 02: %.2f\n", areacidade1,areacidade2);
+      printf ("Área Carta 01 = %.2f | Área Carta 02 = %.2f\n", areacidade1,areacidade2);
       break;
     case 3:
-      printf ("PIB Carta 01: %.2f | PIB Carta 02: %.2f\n", PIB1, PIB2);
+      printf ("PIB Carta 01 = %.2f | PIB Carta 02 = %.2f\n", PIB1, PIB2);
       break;
     case 4:
-      printf ("Nº Ptos Turísticos Carta 01: %d | Nº Ptos Turísticos Carta 02: %d\n", qtdpontos1, qtdpontos2);
+      printf ("Nº Ptos Turísticos Carta 01 = %d | Nº Ptos Turísticos Carta 02 = %d\n", qtdpontos1, qtdpontos2);
       break;
    }
 
-switch (atributo){
+//Exibição do resultado do confronto do primeiro atributo
+switch (atributo1){
    case 1:
-      if (populacao1 > populacao2) {
-         printf ("Carta 01 Venceu!\n");
-      } else if (populacao1 < populacao2) {
-         printf ("Carta 02 Venceu!\n");
+      if (populacao1 != populacao2) {
+      printf ("%s\n", (populacao1 > populacao2) ? "Carta 01 Venceu!" : "Carta 02 Venceu!");
       } else {
-         printf ("Empate!\n");
+      printf ("Empate!\n");
       }
    break;
    case 2:
-      if (areacidade1 > areacidade2) {
-         printf ("Carta 01 Venceu!\n");
-      } else if (areacidade1 < areacidade2) {
-         printf ("Carta 02 Venceu!\n");
+      if (areacidade1 != areacidade2) {
+      printf ("%s\n", (areacidade1 > areacidade2) ? "Carta 01 Venceu!" : "Carta 02 Venceu!");
       } else {
-         printf ("Empate!\n");
+      printf ("Empate!\n");
       }
    break;
       case 3:
-      if (PIB1 > PIB2) {
-         printf ("Carta 01 Venceu!\n");
-      } else if (PIB1 < PIB2) {
-         printf ("Carta 02 Venceu!\n");
+      if (PIB1 != PIB2) {
+      printf ("%s\n", (PIB1 > PIB2) ? "Carta 01 Venceu!" : "Carta 02 Venceu!");
       } else {
-         printf ("Empate!\n");
+      printf ("Empate!\n");
       }
    break;
-         case 4:
-      if (qtdpontos1 > qtdpontos2) {
-         printf ("Carta 01 Venceu!\n");
-      } else if (qtdpontos1 < qtdpontos2) {
-         printf ("Carta 02 Venceu!\n");
+      case 4:
+      if (qtdpontos1 != qtdpontos2) {
+      printf("%s\n", (qtdpontos1 > qtdpontos2) ? "Carta 01 Venceu!" : "Carta 02 Venceu!");
       } else {
-         printf ("Empate!\n");
+      printf("Empate!");
+      }
+   break;
+   case 5:
+      if (Densidadepopulacional1!= Densidadepopulacional2) {
+      printf("%s\n", (Densidadepopulacional1 < Densidadepopulacional2) ? "Carta 01 Venceu!" : "Carta 02 Venceu!");
+      } else {
+      printf("Empate!");
       }
    break;
 }
 
+//Exibição dos valores do segundo atributo de cada carta
+printf ("2º Batalha: %s\n", nomeatributo2);
+   switch (atributo2) {
+      case 1:
+      printf ("População Carta 01 = %lu | População Carta 02 = %lu\n", populacao1, populacao2);
+      break;
+    case 2:
+      printf ("Área Carta 01 = %.2f | Área Carta 02 = %.2f\n", areacidade1,areacidade2);
+      break;
+    case 3:
+      printf ("PIB Carta 01 = %.2f | PIB Carta 02 = %.2f\n", PIB1, PIB2);
+      break;
+    case 4:
+      printf ("Nº Ptos Turísticos Carta 01 = %d | Nº Ptos Turísticos Carta 02 = %d\n", qtdpontos1, qtdpontos2);
+      break;
+   }
 
+//Exibição do resultado do confronto do segundo atributo
+switch (atributo2){
+   case 1:
+      if (populacao1 != populacao2) {
+      printf ("%s\n", (populacao1 > populacao2) ? "Carta 01 Venceu!" : "Carta 02 Venceu!");
+      } else {
+      printf ("Empate!\n");
+      }
+   break;
+   case 2:
+      if (areacidade1 != areacidade2) {
+      printf ("%s\n", (areacidade1 > areacidade2) ? "Carta 01 Venceu!" : "Carta 02 Venceu!");
+      } else {
+      printf ("Empate!\n");
+      }
+   break;
+      case 3:
+      if (PIB1 != PIB2) {
+      printf ("%s\n", (PIB1 > PIB2) ? "Carta 01 Venceu!" : "Carta 02 Venceu!");
+      } else {
+      printf ("Empate!\n");
+      }
+   break;
+      case 4:
+      if (qtdpontos1 != qtdpontos2) {
+      printf("%s\n", (qtdpontos1 > qtdpontos2) ? "Carta 01 Venceu!" : "Carta 02 Venceu!");
+      } else {
+      printf("Empate!");
+      }
+   break;
+   case 5:
+      if (Densidadepopulacional1!= Densidadepopulacional2) {
+      printf("%s\n", (Densidadepopulacional1 < Densidadepopulacional2) ? "Carta 01 Venceu!" : "Carta 02 Venceu!");
+      } else {
+      printf("Empate!");
+      }
+   break;
+}
+
+//Batalha usando a soma dos atributos de cada carta (Superpoder)
+printf ("***Em uma disputa final surpresa, utilizaremos o SUPERPODER das cartas como atributo da rodada!***\n");
+printf ("Super Poder Carta 01 = %.2f | Super Poder Carta 02 = %.2f\n", superpoder1 , superpoder2);
+if ( superpoder1 != superpoder2) {
+   printf ("%s\n", (superpoder1 > superpoder2) ? "Carta 01 Venceu!" : "Carta 02 Venceu!");
+   } else {
+   printf("Empate!");
+}
 
 return 0;
 }
